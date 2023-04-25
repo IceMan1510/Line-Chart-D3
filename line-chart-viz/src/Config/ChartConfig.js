@@ -5,8 +5,8 @@ const chartConfig = {
   },
   Margin: {
     top: 60,
-    right: 60,
-    left: 60,
+    right: 80,
+    left: 80,
     bottom: 60,
   },
   NoOfTicks: {
@@ -15,7 +15,7 @@ const chartConfig = {
   },
   OtherLengths: {
     CircleRadius: 6,
-    LabelsFontSize: 14,
+    LabelsFontSize: 18,
     YTickDistance: -45,
     XTickDistance: 20,
     TickLineLength: 5,

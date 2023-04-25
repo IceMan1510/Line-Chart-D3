@@ -53,7 +53,6 @@
     <YAxis {yScale} {margin} {yPath} {yTicks} {yAxisLabel} {chartConfig} />
     <XAxis
       {height}
-      {width}
       {margin}
       {xScale}
       {xPath}
@@ -62,7 +61,7 @@
       {chartConfig}
     />
     <g transform="translate({margin.left - margin.right} {margin.top})">
-      <path d={path(data)} fill="none" stroke="#DC504F" />
+      <path d={path(data)} fill="none" stroke="#1DA1F2" />
       {#each data as d}
         <circle
           cx={xScale(d.xKey)}
@@ -81,5 +80,8 @@
 <style>
   h2 {
     text-align: center;
+  }
+  svg {
+    border: 1px solid black;
   }
 </style>

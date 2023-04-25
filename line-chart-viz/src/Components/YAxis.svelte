@@ -13,7 +13,7 @@
       text-anchor="end"
       transform="rotate(-90)"
       x="-{margin.top + margin.bottom}"
-      y="-{margin.left - 12}"
+      y="-{margin.left - 20}"
       font-size={chartConfig.OtherLengths.LabelsFontSize}>{yAxisLabel}</text
     >
     <path stroke="currentColor" d={yPath} fill="none" />

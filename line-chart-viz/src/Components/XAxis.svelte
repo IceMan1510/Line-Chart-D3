@@ -4,7 +4,6 @@
   export let xPath;
   export let height;
   export let xTicks;
-  export let width;
   export let xAxisLabel;
   export let chartConfig;
 </script>

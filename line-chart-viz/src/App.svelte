@@ -5,14 +5,13 @@
   import data3 from "./Data/data3.js";
   import LineChart from "./Components/LineChart.svelte";
   import chartConfig from "./Config/ChartConfig";
-  let title = "Religious Weddings In India";
 </script>
 
 <section>
-  <div style="width: 900; text-align: center">
+  <div style="width: 900; text-align: center ; ">
     <LineChart
       {data}
-      {title}
+      title={"Religious Weddings In India"}
       {chartConfig}
       xAxisLabel={"Years"}
       yAxisLabel={"Weddings Count"}
