@@ -5,12 +5,14 @@
   import LineChart from "./Components/LineChart.svelte";
   import chartConfig from "./Config/ChartConfig";
   let title = "Religious Weddings In India";
+  let xAxisLabel = "Year";
+  let yAxisLabel = "Number Of Records";
 </script>
 
 <section>
   <div style="width: 900; text-align: center">
-    <LineChart {data} {title} {chartConfig} />
-    <LineChart data={data1} {title} {chartConfig} />
-    <LineChart data={data2} {title} {chartConfig} />
+    <LineChart {data} {title} {chartConfig} {xAxisLabel} {yAxisLabel} />
+    <LineChart data={data1} {title} {chartConfig} {xAxisLabel} {yAxisLabel} />
+    <LineChart data={data2} {title} {chartConfig} {xAxisLabel} {yAxisLabel} />
   </div>
 </section>

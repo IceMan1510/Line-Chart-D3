@@ -2,6 +2,8 @@
   import XAxis from "./XAxis.svelte";
   import YAxis from "./YAxis.svelte";
   export let chartConfig;
+  export let xAxisLabel;
+  export let yAxisLabel;
   export let data;
   export let title;
   import * as d3 from "d3";
@@ -14,7 +16,7 @@
     .scaleLinear()
     .domain(d3.extent(year))
     .range([margin.left, width - margin.right]);
-  let xTicks = xScale.ticks(20);
+  let xTicks = xScale.ticks(chartConfig.NoOfTicks.TicksOnX);
   let yScale = d3
     .scaleLinear()
     .domain([
@@ -24,7 +26,7 @@
       }),
     ])
     .range([height - margin.top - margin.bottom, 0]);
-  let yTicks = yScale.ticks(10);
+  let yTicks = yScale.ticks(chartConfig.NoOfTicks.TicksOnY);
   let path = d3
     .line()
     .x((d) => xScale(d.Year))
@@ -38,9 +40,18 @@
 <section>
   <h2>{title}</h2>
   <svg {width} {height}>
-    <YAxis {yScale} {margin} {yPath} {yTicks} />
-    <XAxis {height} {width} {margin} {xScale} {xPath} {xTicks} />
-    <g transform="translate({0} {margin.top})">
+    <YAxis {yScale} {margin} {yPath} {yTicks} {yAxisLabel} {chartConfig} />
+    <XAxis
+      {height}
+      {width}
+      {margin}
+      {xScale}
+      {xPath}
+      {xTicks}
+      {xAxisLabel}
+      {chartConfig}
+    />
+    <g transform="translate({margin.left - margin.right} {margin.top})">
       <path d={path(data)} fill="none" stroke="#DC504F" />
       {#each data as d}
         <circle
@@ -48,7 +59,7 @@
           cy={yScale(d.Religious)}
           fill="purple"
           stroke="black"
-          r="6"
+          r={chartConfig.OtherLengths.CircleRadius}
         >
           <title>Year:{d.Year}, Religious:{d.Religious}</title></circle
         >
