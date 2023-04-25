@@ -14,7 +14,6 @@
     transform="translate({margin.left - margin.right}, {height -
       margin.bottom})"
   >
-    <text x={width - margin.right} y={margin.left - margin.right}>X-Axis</text>
     <text
       text-anchor="end"
       x={height}

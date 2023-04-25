@@ -6,31 +6,41 @@
   export let yAxisLabel;
   export let data;
   export let title;
+  export let xKey;
+  export let yKey;
   import * as d3 from "d3";
-  data.sort((a, b) => a.Year - b.Year);
+  for (let i = 0; i < data.length; i++) {
+    data[i].xKey = data[i][`${xKey}`];
+    data[i].yKey = data[i][`${yKey}`];
+    delete data[i][`${xKey}`];
+    delete data[i][`${yKey}`];
+  }
+  data.sort((a, b) => a.xKey - b.xKey);
   let width = chartConfig.Chart.width;
   let height = chartConfig.Chart.height;
   const margin = chartConfig.Margin;
-  const year = data.map((d) => d.Year);
+  const xKeyForTicks = data.map((d) => d.xKey);
   let xScale = d3
     .scaleLinear()
-    .domain(d3.extent(year))
+    .domain(d3.extent(xKeyForTicks))
     .range([margin.left, width - margin.right]);
   let xTicks = xScale.ticks(chartConfig.NoOfTicks.TicksOnX);
   let yScale = d3
     .scaleLinear()
     .domain([
-      0,
+      d3.min(data, (d) => {
+        return +d.yKey;
+      }),
       d3.max(data, (d) => {
-        return +d.Religious;
+        return +d.yKey;
       }),
     ])
     .range([height - margin.top - margin.bottom, 0]);
   let yTicks = yScale.ticks(chartConfig.NoOfTicks.TicksOnY);
   let path = d3
     .line()
-    .x((d) => xScale(d.Year))
-    .y((d) => yScale(d.Religious))
+    .x((d) => xScale(d.xKey))
+    .y((d) => yScale(d.yKey))
     .curve(d3.curveLinear);
 
   let xPath = `M${margin.left},6V0H${width - margin.right}V6`;
@@ -55,13 +65,13 @@
       <path d={path(data)} fill="none" stroke="#DC504F" />
       {#each data as d}
         <circle
-          cx={xScale(d.Year)}
-          cy={yScale(d.Religious)}
+          cx={xScale(d.xKey)}
+          cy={yScale(d.yKey)}
           fill="purple"
           stroke="black"
           r={chartConfig.OtherLengths.CircleRadius}
         >
-          <title>Year:{d.Year}, Religious:{d.Religious}</title></circle
+          <title>{xKey}:{d.xKey}, {yKey}:{d.yKey}</title></circle
         >
       {/each}
     </g>

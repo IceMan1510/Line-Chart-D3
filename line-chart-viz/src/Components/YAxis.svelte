@@ -9,9 +9,6 @@
 
 {#if yTicks}
   <g transform="translate({margin.left} {margin.top})">
-    <text x={margin.left - margin.right} y={margin.left - margin.right}
-      >Y-Axis</text
-    >
     <text
       text-anchor="end"
       transform="rotate(-90)"
