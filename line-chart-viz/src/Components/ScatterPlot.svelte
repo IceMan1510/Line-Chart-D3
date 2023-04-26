@@ -60,9 +60,9 @@
         <circle
           cx={xScale(d.xKey)}
           cy={yScale(d.yKey)}
-          fill="purple"
-          stroke="black"
-          r={chartConfig.OtherLengths.CircleRadius}
+          fill={chartConfig.Chart.CircleFill}
+          stroke={chartConfig.Chart.CircleStroke}
+          r={chartConfig.Other.CircleRadius}
         >
           <title>{xKey}:{d.xKey}, {yKey}:{d.yKey}</title></circle
         >

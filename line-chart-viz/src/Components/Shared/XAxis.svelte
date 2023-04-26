@@ -16,20 +16,24 @@
     <text
       text-anchor="end"
       x={height}
-      y={margin.bottom - 20}
-      font-size={chartConfig.OtherLengths.LabelsFontSize}>{xAxisLabel}</text
+      y={margin.bottom - chartConfig.XAxisConfig.XAxisText}
+      font-size={chartConfig.Other.LabelsFontSize}>{xAxisLabel}</text
     >
-    <path stroke="currentColor" d={xPath} fill="none" />
+    <path
+      stroke={chartConfig.XAxisConfig.XAxisLineColor}
+      d={xPath}
+      fill={chartConfig.XAxisConfig.XAxisLineFill}
+    />
     {#each xTicks as tick, i}
       <g class="tick" transform="translate({xScale(tick)},0)">
         <line
-          stroke="currentColor"
-          y2={chartConfig.OtherLengths.TickLineLength}
+          y2={chartConfig.XAxisConfig.XTickLineLength}
+          stroke={chartConfig.XAxisConfig.XAxisTickColor}
         />
         <text
-          fill="currentColor"
-          y={chartConfig.OtherLengths.XTickDistance}
-          x="-20"
+          fill={chartConfig.XAxisConfig.XAxisTickTextColor}
+          y={chartConfig.XAxisConfig.XTickDistance}
+          x={chartConfig.XAxisConfig.XAxisTickDistance}
         >
           {tick}
         </text>

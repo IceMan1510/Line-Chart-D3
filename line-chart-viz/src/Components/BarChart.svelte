@@ -24,7 +24,8 @@
   let xScale = d3
     .scaleBand()
     .domain(xKeyForTicks)
-    .range([margin.left, width - margin.left]);
+    .range([margin.left, width - margin.left])
+    .padding(0.2);
   let xTicks = xKeyForTicks;
   let yScale = d3
     .scaleLinear()
@@ -36,13 +37,11 @@
         return +d.yKey;
       }),
     ])
-    .range([height - margin.top - margin.bottom, 0]);
+    .range([height - margin.top - margin.bottom, margin.top]);
   let yTicks = yScale.ticks(chartConfig.NoOfTicks.TicksOnY);
 
   let xPath = `M${margin.left},6V0H${width - margin.right}V6`;
   let yPath = `M-6,${height - margin.top - margin.bottom}H0.5V0.5H-6`;
-  $: innerWidth = width - (margin.left + margin.right);
-  $: barWidth = innerWidth / xTicks.length;
 </script>
 
 <section>
@@ -58,15 +57,18 @@
       {xAxisLabel}
       {chartConfig}
     />
-    <g transform="translate({margin.left - margin.right} {margin.top})">
+    <g transform="translate({margin.left - margin.right},{margin.bottom})">
       {#each data as d}
         <rect
-          x={xScale(data.xKey)}
-          y={yScale(data.yKey)}
-          width="10"
-          height={yScale(data.yKey)}
-          ><title>{xKey}:{d.xKey}, {yKey}:{d.yKey}</title></rect
+          width={xScale.bandwidth()}
+          height={height - margin.top - margin.bottom - yScale(d.yKey)}
+          x={xScale(d.xKey)}
+          y={yScale(d.yKey)}
+          fill={chartConfig.Chart.SquareFill}
+          stroke={chartConfig.Chart.SquareStroke}
         >
+          <title>{xKey}:{d.xKey}, {yKey}:{d.yKey}</title>
+        </rect>
       {/each}
     </g>
   </svg>

@@ -2,7 +2,7 @@ import data3 from "../Data/data3";
 const data3Config = {
   data: data3,
   GraphType: "Bar",
-  Title: "Population Data",
+  Title: "Covid Death Data Jan (2021)",
   XAxisLabel: "Countries",
   YAxisLabel: "Population",
   XKey: "country",
@@ -10,6 +10,8 @@ const data3Config = {
   Chart: {
     width: 1000,
     height: 500,
+    SquareFill: "#1DA1F2",
+    SquareStroke: "black",
   },
   Margin: {
     top: 60,
@@ -18,17 +20,31 @@ const data3Config = {
     bottom: 60,
   },
   NoOfTicks: {
-    TicksOnX: 20,
     TicksOnY: 10,
   },
-  OtherLengths: {
+  Other: {
     CircleRadius: 6,
     LabelsFontSize: 18,
-    YTickDistance: -45,
-    XTickDistance: 20,
-    TickLineLength: 5,
   },
-  AxisParameters: {},
+  XAxisConfig: {
+    XTickDistance: 20,
+    XTickLineLength: 0,
+    XAxisTickDistance: 0,
+    XAxisText: 20,
+    XAxisLineFill: "none",
+    XAxisTickTextColor: "currentColor",
+    XAxisLineColor: "currentColor",
+    XAxisTickColor: "currentColor",
+  },
+  YAxisConfig: {
+    YTickDistance: -50,
+    YTickLineLength: 5,
+    YAxisTextDistance: 20,
+    YAxisLineColor: "currentColor",
+    YAxisLineFill: "none",
+    YAxisTickColor: "currentColor",
+    YAxisTickTextColor: "currentColor",
+  },
 };
 
 export default data3Config;

@@ -62,14 +62,18 @@
       {chartConfig}
     />
     <g transform="translate({margin.left - margin.right} {margin.top})">
-      <path d={path(data)} fill="none" stroke="#1DA1F2" />
+      <path
+        d={path(data)}
+        fill={chartConfig.Chart.LineFill}
+        stroke={chartConfig.Chart.LineStroke}
+      />
       {#each data as d}
         <circle
           cx={xScale(d.xKey)}
           cy={yScale(d.yKey)}
-          fill="purple"
-          stroke="black"
-          r={chartConfig.OtherLengths.CircleRadius}
+          fill={chartConfig.Chart.CircleFill}
+          stroke={chartConfig.Chart.CircleStroke}
+          r={chartConfig.Other.CircleRadius}
         >
           <title>{xKey}:{d.xKey}, {yKey}:{d.yKey}</title></circle
         >

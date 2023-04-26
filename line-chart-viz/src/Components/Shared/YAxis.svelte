@@ -13,10 +13,14 @@
       text-anchor="end"
       transform="rotate(-90)"
       x="-{margin.top + margin.bottom}"
-      y="-{margin.left - 20}"
-      font-size={chartConfig.OtherLengths.LabelsFontSize}>{yAxisLabel}</text
+      y="-{margin.left - chartConfig.YAxisConfig.YAxisTextDistance}"
+      font-size={chartConfig.Other.LabelsFontSize}>{yAxisLabel}</text
     >
-    <path stroke="currentColor" d={yPath} fill="none" />
+    <path
+      stroke={chartConfig.YAxisConfig.YAxisLineColor}
+      d={yPath}
+      fill={chartConfig.YAxisConfig.YAxisLineFill}
+    />
 
     {#each yTicks as tick}
       <g
@@ -24,13 +28,13 @@
         transform="translate({margin.top - margin.bottom},{yScale(tick)})"
       >
         <line
-          stroke="currentColor"
-          x2="-{chartConfig.OtherLengths.TickLineLength}"
+          stroke={chartConfig.YAxisConfig.YAxisTickColor}
+          x2="-{chartConfig.YAxisConfig.YTickLineLength}"
         />
         <text
           dy="5"
-          fill="currentColor"
-          x={chartConfig.OtherLengths.YTickDistance}
+          fill={chartConfig.YAxisConfig.YAxisTickTextColor}
+          x={chartConfig.YAxisConfig.YTickDistance}
         >
           {tick}
         </text>

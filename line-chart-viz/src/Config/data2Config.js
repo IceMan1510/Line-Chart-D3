@@ -10,6 +10,8 @@ const data2Config = {
   Chart: {
     width: 1000,
     height: 500,
+    CircleFill: "purple",
+    CircleStroke: "black",
   },
   Margin: {
     top: 60,
@@ -21,14 +23,31 @@ const data2Config = {
     TicksOnX: 20,
     TicksOnY: 10,
   },
-  OtherLengths: {
+  Other: {
     CircleRadius: 6,
     LabelsFontSize: 18,
-    YTickDistance: -45,
-    XTickDistance: 20,
+
     TickLineLength: 5,
   },
-  AxisParameters: {},
+  XAxisConfig: {
+    XAxisTickDistance: -20,
+    XAxisText: 20,
+    XAxisLineFill: "none",
+    XTickDistance: 20,
+    XAxisTickTextColor: "currentColor",
+    XAxisLineColor: "currentColor",
+    XTickLineLength: 5,
+    XAxisTickColor: "currentColor",
+  },
+  YAxisConfig: {
+    YTickDistance: -45,
+    YTickLineLength: 5,
+    YAxisTextDistance: 20,
+    YAxisLineColor: "currentColor",
+    YAxisLineFill: "none",
+    YAxisTickColor: "currentColor",
+    YAxisTickTextColor: "currentColor",
+  },
 };
 
 export default data2Config;

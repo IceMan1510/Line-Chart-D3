@@ -1,4 +1,4 @@
-import data1 from "../Data/data";
+import data1 from "../Data/data1";
 
 const data1Config = {
   data: data1,
@@ -9,6 +9,10 @@ const data1Config = {
   XKey: "Year",
   YKey: "Religious",
   Chart: {
+    CircleFill: "purple",
+    CircleStroke: "black",
+    LineFill: "none",
+    LineStroke: "black",
     width: 1000,
     height: 500,
   },
@@ -22,14 +26,31 @@ const data1Config = {
     TicksOnX: 20,
     TicksOnY: 10,
   },
-  OtherLengths: {
+  Other: {
     CircleRadius: 6,
     LabelsFontSize: 18,
-    YTickDistance: -45,
-    XTickDistance: 20,
-    TickLineLength: 5,
+
+    XTickLineLength: 5,
   },
-  AxisParameters: {},
+  XAxisConfig: {
+    XAxisTickDistance: -20,
+    XAxisText: 20,
+    XAxisLineFill: "none",
+    XTickDistance: 20,
+    XAxisTickTextColor: "currentColor",
+    XAxisLineColor: "currentColor",
+    XTickLineLength: 5,
+    XAxisTickColor: "currentColor",
+  },
+  YAxisConfig: {
+    YTickDistance: -45,
+    YTickLineLength: 5,
+    YAxisTextDistance: 20,
+    YAxisLineColor: "currentColor",
+    YAxisLineFill: "none",
+    YAxisTickColor: "currentColor",
+    YAxisTickTextColor: "currentColor",
+  },
 };
 
 export default data1Config;
