@@ -20,7 +20,7 @@
       font-size={chartConfig.OtherLengths.LabelsFontSize}>{xAxisLabel}</text
     >
     <path stroke="currentColor" d={xPath} fill="none" />
-    {#each xTicks as tick}
+    {#each xTicks as tick, i}
       <g class="tick" transform="translate({xScale(tick)},0)">
         <line
           stroke="currentColor"

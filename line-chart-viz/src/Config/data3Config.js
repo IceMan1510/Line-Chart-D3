@@ -1,4 +1,12 @@
-const chartConfig = {
+import data3 from "../Data/data3";
+const data3Config = {
+  data: data3,
+  GraphType: "Bar",
+  Title: "Population Data",
+  XAxisLabel: "Countries",
+  YAxisLabel: "Population",
+  XKey: "country",
+  YKey: "population",
   Chart: {
     width: 1000,
     height: 500,
@@ -20,6 +28,7 @@ const chartConfig = {
     XTickDistance: 20,
     TickLineLength: 5,
   },
+  AxisParameters: {},
 };
 
-module.exports = chartConfig;
+export default data3Config;

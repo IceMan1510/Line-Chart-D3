@@ -6,6 +6,7 @@
   export let title;
   export let xKey;
   export let yKey;
+
   import * as d3 from "d3";
   import XAxis from "./Shared/XAxis.svelte";
   import YAxis from "./Shared/YAxis.svelte";
@@ -21,11 +22,10 @@
   const margin = chartConfig.Margin;
   const xKeyForTicks = data.map((d) => d.xKey);
   let xScale = d3
-    .scaleLinear()
-    .domain(d3.extent(xKeyForTicks))
-    .range([margin.left, width - margin.right]);
-
-  let xTicks = xScale.ticks(chartConfig.NoOfTicks.TicksOnX);
+    .scaleBand()
+    .domain(xKeyForTicks)
+    .range([margin.left, width - margin.left]);
+  let xTicks = xKeyForTicks;
   let yScale = d3
     .scaleLinear()
     .domain([
@@ -38,14 +38,11 @@
     ])
     .range([height - margin.top - margin.bottom, 0]);
   let yTicks = yScale.ticks(chartConfig.NoOfTicks.TicksOnY);
-  let path = d3
-    .line()
-    .x((d) => xScale(d.xKey))
-    .y((d) => yScale(d.yKey))
-    .curve(d3.curveLinear);
 
   let xPath = `M${margin.left},6V0H${width - margin.right}V6`;
   let yPath = `M-6,${height - margin.top - margin.bottom}H0.5V0.5H-6`;
+  $: innerWidth = width - (margin.left + margin.right);
+  $: barWidth = innerWidth / xTicks.length;
 </script>
 
 <section>
@@ -62,16 +59,13 @@
       {chartConfig}
     />
     <g transform="translate({margin.left - margin.right} {margin.top})">
-      <path d={path(data)} fill="none" stroke="#1DA1F2" />
       {#each data as d}
-        <circle
-          cx={xScale(d.xKey)}
-          cy={yScale(d.yKey)}
-          fill="purple"
-          stroke="black"
-          r={chartConfig.OtherLengths.CircleRadius}
-        >
-          <title>{xKey}:{d.xKey}, {yKey}:{d.yKey}</title></circle
+        <rect
+          x={xScale(data.xKey)}
+          y={yScale(data.yKey)}
+          width="10"
+          height={yScale(data.yKey)}
+          ><title>{xKey}:{d.xKey}, {yKey}:{d.yKey}</title></rect
         >
       {/each}
     </g>

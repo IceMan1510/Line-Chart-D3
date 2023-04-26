@@ -24,7 +24,6 @@
     .scaleLinear()
     .domain(d3.extent(xKeyForTicks))
     .range([margin.left, width - margin.right]);
-
   let xTicks = xScale.ticks(chartConfig.NoOfTicks.TicksOnX);
   let yScale = d3
     .scaleLinear()
@@ -38,11 +37,6 @@
     ])
     .range([height - margin.top - margin.bottom, 0]);
   let yTicks = yScale.ticks(chartConfig.NoOfTicks.TicksOnY);
-  let path = d3
-    .line()
-    .x((d) => xScale(d.xKey))
-    .y((d) => yScale(d.yKey))
-    .curve(d3.curveLinear);
 
   let xPath = `M${margin.left},6V0H${width - margin.right}V6`;
   let yPath = `M-6,${height - margin.top - margin.bottom}H0.5V0.5H-6`;
@@ -62,7 +56,6 @@
       {chartConfig}
     />
     <g transform="translate({margin.left - margin.right} {margin.top})">
-      <path d={path(data)} fill="none" stroke="#1DA1F2" />
       {#each data as d}
         <circle
           cx={xScale(d.xKey)}
