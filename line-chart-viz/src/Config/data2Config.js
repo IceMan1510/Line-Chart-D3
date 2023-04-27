@@ -10,7 +10,7 @@ const data2Config = {
   Chart: {
     width: 1000,
     height: 500,
-    CircleFill: "purple",
+    CircleFill: "#0A4D68",
     CircleStroke: "black",
   },
   Margin: {

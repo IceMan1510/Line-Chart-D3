@@ -9,7 +9,7 @@ const data1Config = {
   XKey: "Year",
   YKey: "Religious",
   Chart: {
-    CircleFill: "purple",
+    CircleFill: "#FF6969",
     CircleStroke: "black",
     LineFill: "none",
     LineStroke: "black",

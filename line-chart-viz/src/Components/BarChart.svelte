@@ -6,7 +6,6 @@
   export let title;
   export let xKey;
   export let yKey;
-
   import * as d3 from "d3";
   import XAxis from "./Shared/XAxis.svelte";
   import YAxis from "./Shared/YAxis.svelte";
@@ -80,5 +79,11 @@
   }
   svg {
     border: 1px solid black;
+  }
+  svg title {
+    background-color: yellow;
+    border: 1px solid black;
+    padding: 5px;
+    font-size: 12px;
   }
 </style>
